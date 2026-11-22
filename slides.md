@@ -121,13 +121,13 @@ Write-up: [docs/CLI_OBSERVER_SI.md](https://github.com/nealmcb/corla-observer/bl
 class: table-slide
 ## Style-based audits of legislative contests (draft for John to check)
 
-| Colorado general election | 2022 | 2024 | 2026 |
-|---|---:|---:|---:|
-| Contested House and Senate contests | 76 | 75 | 74 |
-| Targeted | 1 | 1 | 4 |
-| Risk level at or below 3% | 36 | 18 | 32 |
-| Cards examined, all contests | 6,454 | 4,897 | 5,553 |
-| Est. cards for all at 3%, style-based | ≤ 6,400 | ≤ 5,200\* | ≤ 3,900 |
+| Colorado general election | 2020 | 2022 | 2024 | 2026 |
+|---|---:|---:|---:|---:|
+| Contested House and Senate contests | 77 | 76 | 75 | 74 |
+| Targeted | 5 | 1 | 1 | 4 |
+| Risk level at or below 3% | 59 | 36 | 18 | 32 |
+| Cards examined, all contests | 8,306 | 6,454 | 4,897 | 5,553 |
+| Est. cards for all at 3%, style-based | ≤ 4,100 | ≤ 6,400 | ≤ 5,200\* | ≤ 3,900 |
 
 * Diluted margin over the contest's own cards: 2024 House District 1
   (10,071 votes), 0.68% → 26.4%, so ~1,064 → ~26 cards
@@ -137,13 +137,13 @@ class: table-slide
 \*Not counting two House contests in recount range
 
 ???
-Draft for John Caron to check, revise or reject. Every number below is from 2024, 2022 or 2026 general-election data as stated; estimates are labelled.
+Draft for John Caron to check, revise or reject. Every number below is from 2020, 2022, 2024 or 2026 general-election data as stated; estimates are labelled.
 
-Counts and risk levels: our analysis's cross-election database, which we may publish (true_contests, risk_calculations at each contest's latest round, ballot_comparisons). "Contested" leaves out uncontested contests (no margin): 6 in 2022, 8 in 2024, 12 in 2026. "Targeted" means the whole contest was a formal target (coverage_status 'targeted'): 2022 Senate District 30; 2024 House District 10; 2026 House District 52 and Senate Districts 3, 20, 24. Every other legislative contest was audited opportunistically, on cards drawn for other targets, and has an opportunistic risk level computed from all cards examined in its counties, downsampled to the lowest county sampling rate. Median risk level of the contested legislative contests: 4.2% (2022), 14.2% (2024), 4.9% (2026). Cards examined: distinct cards in the comparison files (2024's 4,897 matches rlauxe's uniform count). 2026 figures are from round 2 data, computed 2026-11-22.
+Counts and risk levels: our analysis's cross-election database, which we may publish (true_contests, risk_calculations at each contest's latest round, ballot_comparisons). "Contested" leaves out uncontested contests (no margin): 6 in 2020, 6 in 2022, 8 in 2024, 12 in 2026. "Targeted" means the whole contest was a formal target (coverage_status 'targeted'): 2020 House Districts 30, 44 and 46 and Senate Districts 19 and 27; 2022 Senate District 30; 2024 House District 10; 2026 House District 52 and Senate Districts 3, 20, 24. Every other legislative contest was audited opportunistically, on cards drawn for other targets, and has an opportunistic risk level computed from all cards examined in its counties, downsampled to the lowest county sampling rate. Median risk level of the contested legislative contests: 0.1% (2020), 4.2% (2022), 14.2% (2024), 4.9% (2026). Cards examined: distinct cards in the comparison files (2024's 4,897 matches rlauxe's uniform count). 2026 figures are from round 2 data, computed 2026-11-22.
 
 Cross-check, 2024: John's rlauxe-based risk levels (not yet published) cover 67 of the 75 contested legislative contests; 14 of them at or below 3%, median 26%. They are higher than ours because rlauxe's n leaves out cards drawn for the statewide targets, which our analysis now counts.
 
-Estimated cards (an estimate, not an rlauxe run): no-discrepancy Kaplan-Markov sample size n = ln(0.03) / ln(1 − m / (2 × 1.03905)), the formula behind CORLA's own estimates (it reproduces the estMvrs column of risks-via-kotlin.csv). Style-based diluted margin m = margin in votes / contest_ballot_card_count (CORLA's count of cards carrying the contest), not the count of all cards in the contest's counties. The slide shows the upper end of a range: from the larger of the House sum and the Senate sum (House districts do not overlap, and Senate samples can reuse House-sampled cards) up to the sum of both. Ranges: 2022, 4,773 to 6,377; 2024, 3,555 to 5,186 (without the two recount-range contests); 2026, 3,184 to 3,903. Discrepancies would raise these numbers; the other targets' samples would still be needed, and would overlap these. The numbers come from a script of ours, not yet published.
+Estimated cards (an estimate, not an rlauxe run): no-discrepancy Kaplan-Markov sample size n = ln(0.03) / ln(1 − m / (2 × 1.03905)), the formula behind CORLA's own estimates (it reproduces the estMvrs column of risks-via-kotlin.csv). Style-based diluted margin m = margin in votes / contest_ballot_card_count (CORLA's count of cards carrying the contest), not the count of all cards in the contest's counties. The slide shows the upper end of a range: from the larger of the House sum and the Senate sum (House districts do not overlap, and Senate samples can reuse House-sampled cards) up to the sum of both. Ranges: 2020, 2,449 to 4,066; 2022, 4,773 to 6,377; 2024, 3,555 to 5,186 (without the two recount-range contests); 2026, 3,184 to 3,903. Discrepancies would raise these numbers; the other targets' samples would still be needed, and would overlap these. The numbers come from a script of ours, not yet published.
 
 2024 recount-range contests (margin at most 0.5% of the winner's votes): House District 16, 20,640 to 20,633 (7 votes; diluted margin 0.016% over its 44,231 cards, about 46,000 cards); House District 19, 28,417 to 28,294 (123 votes; 0.20%, about 3,600 cards). With them the 2024 upper figure is about 54,800.
 
