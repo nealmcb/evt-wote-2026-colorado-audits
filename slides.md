@@ -47,12 +47,14 @@ to *anyone can verify it*
 ---
 ## How Colorado audits
 
-* Every ballot is scanned; the **cast vote record (CVR)** records every vote
-* A public dice roll seeds the random sample
-* Audit boards read each sampled ballot card and compare it with its CVR row
+* Every ballot is scanned centrally; the **cast vote record (CVR)** records every vote
+* A public dice roll seeds a publicly verifiable random sample
+* Audit boards review each sampled voter-verified ballot card and report every mark on every contest, without knowing how the system reported it
+* The CORLA software compares the two interpretations, driving the targeted contests (only) to meet the risk limit, by expanding the selection in extra rounds as necessary
 
-So **every contest on a sampled card** is compared,
-not just the targeted ones
+* The other contests are all audited *opportunistically*, but not guaranteed to meet a risk limit
+
+Note: some data is still incomplete, these figures will be updated as we fill in the gaps
 
 ???
 Targeted contests drive the sample size; the rest are compared "opportunistically".
@@ -79,11 +81,7 @@ Source: Table 1 of our analysis, from the rebuilt cross-election database, which
 * **1,156,617** contest comparisons; **738** discrepancies (0.064%)
 * Rates vary about twentyfold between elections
 * Ten years: five contests went to round 3, one to round 4
-* Causes: audit boards' data-entry slips, occasional wrong ballots
-  (voters' overvotes, entered as marked, are not discrepancies)
-
-**But:** the evidence was scattered and short-lived;
-we had to mirror and rebuild it
+* Causes: mostly audit boards' ballot retrieval or data-entry slips, occasional adjudication or vote interpretation differences
 
 ???
 Discrepancies: o2/o1 overstatements and u1/u2 understatements, Kaplan-Markov typing matching CORLA's rule.
@@ -108,8 +106,8 @@ Thanks to the clerks: Tiffany Lee (La Plata), Carly Koppes (Weld), Kevin Strauch
 * 52 targeted contests: 50 met the risk limit in round 1, 2 in round 2
 * In Weld, the redacted CVR matched CORLA's own CVR
   on every audited card: **5,980 of 5,980** choices
-* Observers' records: signed on their own devices,
-  checkable without trusting our software
+* Observers' records: uploaded live, but signed on their own devices,
+  checkable without trusting our server software (*a model for CORLA itself?*)
 
 ???
 Targeted contests from CORLA's round 2 contest.csv and results report; round 2 was Jackson County Assessor and Montezuma County Commissioner District 1. CORLA's 71 targets are these 52 targeted contests plus 19 county portions of multi-county contests, each sized on one county's margin; a county portion is a target but not a targeted contest, so the 19 are not counted here.
