@@ -79,7 +79,7 @@ Source: Table 1 of our analysis, from the rebuilt cross-election database, which
 ---
 ## What the data show
 
-* **1,156,617** contest comparisons; **738** discrepancies (0.064%)
+* **1,448,499** contest comparisons; **959** discrepancies (0.066%)
 * Rates vary about twentyfold between elections
 * Ten years: five contests went to round 3, one to round 4
 * Causes: mostly audit boards' ballot retrieval or data-entry slips, occasional adjudication or vote interpretation differences
@@ -258,27 +258,43 @@ class: table-slide, wide
 | Election | o2 | o1 | u1 | u2 | Total | Examined | Rate |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | 2018 general | 6 | 3 | 0 | 3 | 12 | 164,796 | 0.0073% |
+| 2019 | 26 | 12 | 10 | 20 | 68 | 58,659 | 0.1159% |
 | 2020 (primary) | 16 | 4 | 4 | 16 | 40 | 61,546 | 0.0650% |
 | 2020 (general) | 59 | 68 | 85 | 47 | 259 | 234,333 | 0.1105% |
 | 2020 (presidential) | 0 | 0 | 0 | 0 | 0 | 155 | 0.0000% |
 | 2021 | 5 | 11 | 11 | 5 | 32 | 60,597 | 0.0528% |
 | 2022 (primary) | 6 | 8 | 5 | 7 | 26 | 118,827 | 0.0219% |
+| 2022 (general) | 54 | 39 | 36 | 24 | 153 | 233,223 | 0.0656% |
 | 2023 | 5 | 3 | 9 | 2 | 19 | 35,486 | 0.0535% |
 | 2024 | 47 | 52 | 71 | 55 | 225 | 149,272 | 0.1507% |
 | 2025 | 4 | 6 | 4 | 3 | 17 | 47,706 | 0.0356% |
 | 2026 (general) | 39 | 29 | 25 | 8 | 101 | 191,363 | 0.0528% |
 | 2026 (primary) | 5 | 0 | 0 | 2 | 7 | 92,536 | 0.0076% |
-| **Overall** | **192** | **184** | **214** | **148** | **738** | **1,156,617** | **0.0638%** |
-| Overall rate | 0.0166% | 0.0159% | 0.0185% | 0.0128% | — | — | 0.0638% |
+| **Overall** | **272** | **235** | **260** | **192** | **959** | **1,448,499** | **0.0662%** |
+| Overall rate | 0.0188% | 0.0162% | 0.0179% | 0.0133% | — | — | 0.0662% |
 
 ???
-Caption: Two- and one-vote overstatement (o2/o1) and one- and two-vote understatement (u1/u2) discrepancy counts and rates by election. 2019 coordinated and 2022 general are excluded here (source data not further categorized); 2017 pilot, 2018 primary, and 2020 presidential's own predecessor formats have no comparison data at all.
+Caption: Two- and one-vote overstatement (o2/o1) and one- and two-vote understatement (u1/u2) discrepancy counts and rates by election; Total counts typed discrepancies only. The 2017 coordinated election and the 2018 primary have no comparison data; Table~\ref{tab:county-discrepancy-totals} gives CORLA's county totals for them.
 
-From our analysis: Across every election with ballot-level comparison data (2018 general plus every "contest CSV"-era election, eleven instances in all), **738 genuine discrepancies were found across 1,156,617 examined contest-ballot comparisons, an overall rate of 0.064%** — broken down by Kaplan-Markov type and by election in the table.
+From our analysis: Across every election with ballot-level comparison data (2018 general plus every "contest CSV"-era election, thirteen instances in all), **959 genuine, typed discrepancies were found across 1,448,499 examined contest-ballot comparisons, an overall rate of 0.066%** — broken down by Kaplan-Markov type and by election in the table.
 
 ---
 class: table-slide
-### Table 5 (low importance): Secretary of State discrepancy reports, two transcriptions compared: to be reviewed, not included
+### Table 5: CORLA's untyped county totals, 2017 and the 2018 primary
+
+| Election | Counties | Cards audited | Audited contests | Other contests | Total |
+|---|---:|---:|---:|---:|---:|
+| 2017 coordinated | 50 | 3,104 | 20 | 45 | 65 |
+| 2018 (primary) | 58 | 7,971 | 17 | 74 | 91 |
+
+???
+Caption: Discrepancies in the 2017 coordinated election and the 2018 primary as CORLA's state audit reports count them, summed over each county's latest Round Summary block: ballot cards audited, and discrepancies in the county's audited contests and in its other contests. The counts are untyped and count a ballot card once in each group, so they are not comparable with the rates of Table~\ref{tab:discrepancy-typing-by-election}.
+
+From our analysis: For the 2017 coordinated election and the 2018 primary, CORLA's state audit reports give only untyped county totals (the table): 65 discrepancies on 3,104 ballot cards audited in 50 counties in 2017, and 91 on 7,971 cards in 58 counties in the 2018 primary. CORLA's unit is not ours. For the 2022 general, which has both records, the state report's 7 discrepancies in audited contests and 52 in other contests are exactly the numbers of audited ballot cards with at least one genuine discrepancy in an audited contest and in any other contest; the same holds for the 2023 coordinated election and the 2026 primary. CORLA thus counts a card once in each group, however many of its contests disagree, where we count every contest: the 2022 general's 59 by CORLA's count are 186 genuine discrepancies (153 typed) by ours.
+
+---
+class: table-slide
+### Table 6 (low importance): Secretary of State discrepancy reports, two transcriptions compared: to be reviewed, not included
 
 | Election | Independently re-derived | Previously published | Gap |
 |---|---:|---:|---:|
