@@ -28,7 +28,7 @@ Neal McBurnett, Lori Stevens, John Caron, Mike Raisch
 
 Rice University, Houston, Texas · December 7, 2026
 
-.footnote[Draft version 1 · 2026-11-22 16:08 MST]
+.footnote[Draft version 2 · 2026-11-22 16:28 MST]
 
 ???
 15 minutes in all: about 11 of talk, 4 for questions.
