@@ -91,3 +91,18 @@ code {
 }
 
 /* Slide-specific styling */
+
+/* Appendix slides holding the paper's tables */
+.paper-table table {
+    border-collapse: collapse;
+    font-size: 0.75em;
+    font-variant-numeric: tabular-nums;
+}
+.paper-table th, .paper-table td {
+    border-bottom: 1px solid #ccc;
+    padding: 0.15em 0.4em;
+}
+/* The widest table (eight columns) needs a smaller font to fit the 4:3 slide */
+.paper-table.wide table {
+    font-size: 0.62em;
+}
