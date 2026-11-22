@@ -1,5 +1,7 @@
 # EVT/WOTE 2026 talk: Evidence and Best Practices from Colorado Audits
 
+Live deck: https://neal.mcburnett.org/elections/evt-wote-2026-colorado-audits/
+
 **Do not trust any of this yet.** The slides, notes and chart are a draft that has had almost no
 review. They were drafted with Claude, which repeatedly restated points it had misunderstood, for
 example about which contests were targeted. The numbers rest on complicated notions that are easy

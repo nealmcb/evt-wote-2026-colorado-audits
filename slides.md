@@ -31,6 +31,8 @@ EVT/WOTE 2026
 
 To display locally, run `view-presentation`.
 To make a PDF: `decktape http://localhost:8000/#1 evt-wote-2026.pdf`
+To publish, run: rsync -av --exclude '.git' --exclude 'neal-ignore' ../evt-wote-2026-colorado-audits /home/neal/info/bcn/neal-mcburnett-org/site/elections/ and deploy that site (its PLAN.md: generate_directory_manifest.py, then npx wrangler deploy)
+To visit: google-chrome https://neal.mcburnett.org/elections/evt-wote-2026-colorado-audits/
 
 ---
 ## Why this matters now
