@@ -91,7 +91,8 @@ def tables() -> list[tuple[str, str, str, str]]:
 # are counted as targets rather than marked "blocked".
 TABLE_OVERRIDES = {
     4: ("Table 4: Discrepancy types", []),
-    5: ("Table 5 (low importance): Secretary of State discrepancy reports, two transcriptions compared: to be reviewed, not included", []),
+    5: ("Table 5: CORLA's untyped county totals, 2017 and the 2018 primary", []),
+    6: ("Table 6 (low importance): Secretary of State discrepancy reports, two transcriptions compared: to be reviewed, not included", []),
     2: (
         "Table 2: Selection reproduction data: probably drop this slide",
         [
