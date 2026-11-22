@@ -1,30 +1,42 @@
 #!/usr/bin/env python3
-"""Write contests.svg: contests per Colorado election, by how the audit compared them.
+"""Write contests.svg: contests per Colorado election, targeted and opportunistic.
 
 Written 2026-11-21 for the EVT/WOTE 2026 talk. The numbers are the paper's
-contest coverage counts (its Table 1), computed that day from the rebuilt
-cross-election database behind the paper (to be published): targeted contests, contests compared opportunistically
-(named in CORLA's comparison files but not targeted), and contests with no comparison
-record. 2017-2018 (ballot-list era) and the 2026 general are not in that table.
-Colours are Okabe-Ito (blue, orange, grey), readable with red-green colour blindness;
-the legend also labels each band in text. Standard library only.
+contest coverage counts (its Table 1), computed that day from the cross-election database
+behind the paper (to be published), rebuilt with the 2026 general onboarded (2026 general
+files from the auditcenter mirror at commit 357c682). Two bands: targeted contests (the whole
+contest was a formal target) and opportunistic contests (every other contest, audited on
+cards drawn for other targets; a contest whose only targets were county portions, each sized
+on one county's margin, is opportunistic). The opportunistic band is split by shade: the
+lighter part is the opportunistic contests that no row of CORLA's comparison files names,
+under the contest's name or a county portion's. That describes the export, not an absence of
+evidence: those contests still get an opportunistic risk level (the paper's §4.3).
+2017-2018 (ballot-list era) are not in that table, and the 2020 presidential primary's 2
+contests are left out of the chart. Colours are Okabe-Ito blue and orange, with a lighter
+tint of the orange, readable with red-green colour blindness; the legend also labels each
+band in text. Standard library only.
 """
 
 from pathlib import Path
 
-ROWS = [  # election, targeted, opportunistic, no comparison record
-    ("2019", 52, 498, 26),
-    ("2020 primary", 34, 304, 34),
-    ("2020 general", 60, 520, 72),
-    ("2021", 54, 588, 24),
-    ("2022 primary", 38, 604, 9),
-    ("2022 general", 43, 871, 47),
-    ("2023", 43, 542, 76),
-    ("2024 general", 63, 597, 61),
-    ("2025", 62, 541, 37),
-    ("2026 primary", 26, 580, 14),
+ROWS = [  # election, targeted, opportunistic named in a comparison row, opportunistic with none
+    ("2019", 52, 502, 22),
+    ("2020 primary", 34, 321, 17),
+    ("2020 general", 60, 526, 66),
+    ("2021", 54, 591, 21),
+    ("2022 primary", 38, 612, 1),
+    ("2022 general", 43, 881, 37),
+    ("2023", 43, 549, 69),
+    ("2024 general", 63, 599, 59),
+    ("2025", 62, 548, 30),
+    ("2026 primary", 26, 593, 1),
+    ("2026 general", 52, 876, 53),
 ]
-COLOURS = [("Targeted", "#0072B2"), ("Compared opportunistically", "#E69F00"), ("No comparison record", "#BBBBBB")]
+COLOURS = [
+    ("Targeted", "#0072B2"),
+    ("Opportunistic", "#E69F00"),
+    ("Opportunistic, no comparison row", "#F5D9A0"),
+]
 
 W, H = 760, 460
 LEFT, RIGHT, TOP, BOTTOM = 70, 70, 70, 90
@@ -41,7 +53,7 @@ def y(v: float) -> float:
 parts = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
     'font-family="Helvetica, Arial, sans-serif">',
-    f'<text x="{LEFT}" y="28" font-size="20" font-weight="bold">Contests per election, by how the audit compared them</text>',
+    f'<text x="{LEFT}" y="28" font-size="20" font-weight="bold">Contests per election: targeted and opportunistic</text>',
 ]
 for v in range(0, top_value + 1, 250):
     parts.append(f'<line x1="{LEFT}" x2="{W - RIGHT}" y1="{y(v):.1f}" y2="{y(v):.1f}" stroke="#dddddd"/>')
@@ -63,4 +75,10 @@ for name, colour in COLOURS:
     lx += 20 + len(name) * 7.4 + 24
 parts.append("</svg>")
 Path(__file__).with_name("contests.svg").write_text("\n".join(parts) + "\n", encoding="utf-8")
-print("wrote contests.svg:", sum(sum(r[1:]) for r in ROWS), "contests,", sum(r[1] for r in ROWS), "targeted")
+print(
+    "wrote contests.svg:",
+    sum(sum(r[1:]) for r in ROWS), "contests,",
+    sum(r[1] for r in ROWS), "targeted,",
+    sum(r[2] + r[3] for r in ROWS), "opportunistic, of which",
+    sum(r[3] for r in ROWS), "with no comparison row",
+)
