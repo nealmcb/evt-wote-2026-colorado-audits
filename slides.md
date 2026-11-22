@@ -10,7 +10,7 @@ The numbers rest on complicated notions: CORLA targeting
 **opportunistic** contests with no comparison row, and
 **missing or inconsistent data** in the state's exports.
 
-Check every figure against the paper and the data. See README.md.
+Check every figure against our analysis and data. See README.md.
 
 ???
 Remove this slide once the talk has been reviewed.
@@ -67,11 +67,11 @@ An audit of a contest is not the same as a risk-limiting audit of it.
 **529 targeted**, **6,974 opportunistic**
 
 ???
-7,503 contests from 2019 through the 2026 general, as in the paper's Table 1; 981 of them in the 2026 general. The chart leaves out the 2020 presidential primary's 2 contests (7,501 shown, 527 targeted).
+7,503 contests from 2019 through the 2026 general, as in Table 1 of our analysis; 981 of them in the 2026 general. The chart leaves out the 2020 presidential primary's 2 contests (7,501 shown, 527 targeted).
 Targeted: the whole contest was a formal sampling target. A county portion of a multi-county contest, targeted on one county's margin, does not make the contest targeted.
-Opportunistic: every other contest, audited on the cards drawn for the targets. Each gets an opportunistic risk level, which CORLA does not report (paper §4.3 and §7).
+Opportunistic: every other contest, audited on the cards drawn for the targets. Each gets an opportunistic risk level, which CORLA does not report.
 Light orange: the 376 opportunistic contests that no row of CORLA's comparison export names, because none of the cards drawn happened to carry them. That describes the export, not an absence of evidence: they still get an opportunistic risk level.
-Source: the paper's Table 1, from its rebuilt cross-election database (to be published).
+Source: Table 1 of our analysis, from the rebuilt cross-election database, which we may publish.
 
 ---
 ## What the data show
@@ -141,10 +141,10 @@ github.com/nealmcb/auditcenter
 
 sites.google.com/view/auditenhancement
 
-<!-- paper tables: start (make_paper_slides.py) -->
+<!-- analysis tables: start (make_table_slides.py) -->
 ---
-class: paper-table, wide
-### From the paper: Table 1
+class: table-slide, wide
+### From our analysis: Table 1
 
 | Election | Total contests | Targeted | Opportunistic | of which no comparison row | Single-county | Partial multi-county | Statewide |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -165,11 +165,11 @@ class: paper-table, wide
 ???
 Caption: Targeted and opportunistic contests by election, and by county span. "Of which no comparison row" is the part of the opportunistic count that no row of CORLA's comparison export names.
 
-From the paper (04-coverage.md): Across the full survey (the table), **529 of 7,503 contests (7.1%) were targeted, and the other 6,974 (92.9%) were audited opportunistically**. Of the opportunistic contests, 6,598 (87.9% of all contests) are named, under their own name or a county portion's, in at least one examined ballot's comparison row, and 376 (5.0%) are named in none. Targeted contests are consistently a small minority of the total — never more than about 10% (setting aside the 2020 presidential primary, whose only two contests were both targeted), and 4 to 5% in the 2022 general and the 2026 primary and general, where the number of small down-ballot contests grows faster than the number of contests formally selected to drive sampling.
+From our analysis: Across the full survey (the table), **529 of 7,503 contests (7.1%) were targeted, and the other 6,974 (92.9%) were audited opportunistically**. Of the opportunistic contests, 6,598 (87.9% of all contests) are named, under their own name or a county portion's, in at least one examined ballot's comparison row, and 376 (5.0%) are named in none. Targeted contests are consistently a small minority of the total — never more than about 10% (setting aside the 2020 presidential primary, whose only two contests were both targeted), and 4 to 5% in the 2022 general and the 2026 primary and general, where the number of small down-ballot contests grows faster than the number of contests formally selected to drive sampling.
 
 ---
-class: paper-table
-### From the paper: Table 2
+class: table-slide
+### From our analysis: Table 2
 
 | Election | County-level targets | Statewide targets |
 |---|---:|---:|
@@ -189,11 +189,11 @@ class: paper-table
 ???
 Caption: Selection-reproduction results by election.
 
-From the paper (05-verification.md): Across the twelve election instances where the necessary files exist (the earliest three instances predate the file formats this check requires, per §3.1), **821 of 822 checkable targets — 99.9% — reproduce the audit software's own official selection exactly: zero ballots missing, zero extra**, for every target but one. Results by election appear in the table. As §5.1 introduces, this table counts targets, not deduplicated contests as in §4 — a single county-level contest name run independently by, say, twenty counties contributes twenty targets here, so the two tables' totals are not meant to be compared directly.
+From our analysis: Across the twelve election instances where the necessary files exist (the earliest three instances predate the file formats this check requires), **821 of 822 checkable targets — 99.9% — reproduce the audit software's own official selection exactly: zero ballots missing, zero extra**, for every target but one. Results by election appear in the table. This table counts targets, not deduplicated contests as in Table 1 — a single county-level contest name run independently by, say, twenty counties contributes twenty targets here, so the two tables' totals are not meant to be compared directly.
 
 ---
-class: paper-table
-### From the paper: Table 3
+class: table-slide
+### From our analysis: Table 3
 
 | Source | o2 | o1 | u1 | u2 | Total |
 |---|---:|---:|---:|---:|---:|
@@ -203,11 +203,11 @@ class: paper-table
 ???
 Caption: Typed-discrepancy validation across just the 529 formally targeted contests: independently derived counts against CORLA's own reported counts, matching exactly.
 
-From the paper (05-verification.md): As a secondary, independent validation channel, a typed-discrepancy check — comparing the count of each Kaplan-Markov discrepancy category (two-vote and one-vote overstatements and understatements, `o2`/`o1`/`u2`/`u1`; §6.2 reports what these mean and finds substantively) independently derived from the normalized per-ballot comparison data against the audit software's own reported counts for the same categories, contest by contest — matches exactly for every one of the 529 formally targeted contests where both counts exist (the table), a check that exercises a different part of the pipeline (per-ballot comparison parsing rather than PRNG reconstruction) and corroborates the same conclusion from an independent angle.
+From our analysis: As a secondary, independent validation channel, a typed-discrepancy check — comparing the count of each Kaplan-Markov discrepancy category (two-vote and one-vote overstatements and understatements, `o2`/`o1`/`u2`/`u1`) independently derived from the normalized per-ballot comparison data against the audit software's own reported counts for the same categories, contest by contest — matches exactly for every one of the 529 formally targeted contests where both counts exist (the table), a check that exercises a different part of the pipeline (per-ballot comparison parsing rather than PRNG reconstruction) and corroborates the same conclusion from an independent angle.
 
 ---
-class: paper-table
-### From the paper: Table 4
+class: table-slide
+### From our analysis: Table 4
 
 | Election | o2 | o1 | u1 | u2 | Total | Examined | Rate |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -226,13 +226,13 @@ class: paper-table
 | Overall rate | 0.0166% | 0.0159% | 0.0185% | 0.0128% | — | — | 0.0638% |
 
 ???
-Caption: Two- and one-vote overstatement (o2/o1) and one- and two-vote understatement (u1/u2) discrepancy counts and rates by election. 2019 coordinated and 2022 general are excluded here (source data not further categorized -- §6.4); 2017 pilot, 2018 primary, and 2020 presidential's own predecessor formats have no comparison data at all (§3.1).
+Caption: Two- and one-vote overstatement (o2/o1) and one- and two-vote understatement (u1/u2) discrepancy counts and rates by election. 2019 coordinated and 2022 general are excluded here (source data not further categorized); 2017 pilot, 2018 primary, and 2020 presidential's own predecessor formats have no comparison data at all.
 
-From the paper (06-discrepancies.md): Across every election with ballot-level comparison data (2018 general plus every "contest CSV"-era election, eleven instances in all — §3.1), **738 genuine discrepancies were found across 1,156,617 examined contest-ballot comparisons, an overall rate of 0.064%** — broken down by Kaplan-Markov type and by election in the table.
+From our analysis: Across every election with ballot-level comparison data (2018 general plus every "contest CSV"-era election, eleven instances in all), **738 genuine discrepancies were found across 1,156,617 examined contest-ballot comparisons, an overall rate of 0.064%** — broken down by Kaplan-Markov type and by election in the table.
 
 ---
-class: paper-table
-### From the paper: Table 5
+class: table-slide
+### From our analysis: Table 5
 
 | Election | Independently re-derived | Previously published | Gap |
 |---|---:|---:|---:|
@@ -249,6 +249,6 @@ class: paper-table
 ???
 Caption: Reconciliation of the independently re-derived discrepancy-report row counts against an earlier published tally of the same eight elections.
 
-From the paper (06-discrepancies.md): A from-scratch re-derivation of the same underlying Secretary of State reports, performed independently of an earlier published tally of the same eight elections, reproduces four of the eight exactly but comes up 20 rows short across the other four (814 versus 834 total, a 2.4% gap):
+From our analysis: A from-scratch re-derivation of the same underlying Secretary of State reports, performed independently of an earlier published tally of the same eight elections, reproduces four of the eight exactly but comes up 20 rows short across the other four (814 versus 834 total, a 2.4% gap):
 
-<!-- paper tables: end -->
+<!-- analysis tables: end -->

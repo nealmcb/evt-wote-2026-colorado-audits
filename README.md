@@ -13,7 +13,7 @@ to get wrong:
   opportunistic risk levels; they are not unaudited or unknown.
 - The state's exports have missing and inconsistent data, which the counts depend on.
 
-Check every figure against the paper and the data before using it.
+Check every figure against our analysis and data before using it.
 
 ## What is here
 
@@ -21,21 +21,21 @@ A draft of the 15-minute talk for EVT/WOTE 2026, as a [remark.js](https://remark
 deck:
 
 - `slides.md`: the slides, with speaker notes after each `???`. The last slides, between the
-  `paper tables` markers, are the paper's tables.
+  `analysis tables` markers, are the tables of our analysis.
 - `slides.css`: the deck's styles; `index.html` loads remark.js (from remarkjs.com, so viewing
   needs a network connection) and `slides.md`.
 - `make_contests_chart.py`: writes `contests.svg`, the chart on slide 4 (contests per election,
-  targeted and opportunistic). Its numbers are copied into the script from the paper's
-  Table 1 (the paper and its database are to be published); its docstring says which build.
-- `make_paper_slides.py`: copies the tables of the paper (its Markdown sections,
-  `paper/sections/0*.md`, given with `--paper`) into `slides.md` as appendix slides, with each table's caption and
-  explanation in the speaker notes. Re-run it whenever the paper's tables change.
+  targeted and opportunistic). Its numbers are copied into the script from Table 1 of
+  our analysis (the analysis and its data are not yet published); its docstring says which build.
+- `make_table_slides.py`: copies the tables of our analysis (its Markdown sections,
+  `0*.md` in the folder given with `--sections`) into `slides.md` as appendix slides, with each table's caption and
+  explanation in the speaker notes. Re-run it whenever the analysis's tables change.
 
 Both scripts use only the Python standard library:
 
 ```
 python3 make_contests_chart.py
-python3 make_paper_slides.py --paper PATH/TO/paper/sections
+python3 make_table_slides.py --sections PATH/TO/sections
 ```
 
 ## Viewing and rendering

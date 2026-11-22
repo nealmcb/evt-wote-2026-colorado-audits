@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Write contests.svg: contests per Colorado election, targeted and opportunistic.
 
-Written 2026-11-21 for the EVT/WOTE 2026 talk. The numbers are the paper's
+Written 2026-11-21 for the EVT/WOTE 2026 talk. The numbers are our analysis's
 contest coverage counts (its Table 1), computed that day from the cross-election database
-behind the paper (to be published), rebuilt with the 2026 general onboarded (2026 general
+behind it, which we may publish, rebuilt with the 2026 general onboarded (2026 general
 files from the auditcenter mirror at commit 357c682). Two bands: targeted contests (the whole
 contest was a formal target) and opportunistic contests (every other contest, audited on
 cards drawn for other targets; a contest whose only targets were county portions, each sized
 on one county's margin, is opportunistic). The opportunistic band is split by shade: the
 lighter part is the opportunistic contests that no row of CORLA's comparison files names,
 under the contest's name or a county portion's. That describes the export, not an absence of
-evidence: those contests still get an opportunistic risk level (the paper's §4.3).
+evidence: those contests still get an opportunistic risk level (our analysis).
 2017-2018 (ballot-list era) are not in that table, and the 2020 presidential primary's 2
 contests are left out of the chart. Colours are Okabe-Ito blue and orange, with a lighter
 tint of the orange, readable with red-green colour blindness; the legend also labels each
