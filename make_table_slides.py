@@ -86,13 +86,73 @@ def tables() -> list[tuple[str, str, str, str]]:
     return out
 
 
+# Talk-only changes to a table slide: table number -> (heading, [(old cell text, new), ...]).
+# Table 2 counts targets; in the talk, targets whose draws couldn't be reproduced (no manifest)
+# are counted as targets rather than marked "blocked".
+TABLE_OVERRIDES = {
+    4: ("Table 4: Discrepancy types", []),
+    5: ("Table 5 (low importance): Secretary of State discrepancy reports, two transcriptions compared: to be reviewed, not included", []),
+    2: (
+        "Table 2: Selection reproduction data: probably drop this slide",
+        [
+            ("| 2020 (presidential) | 0/0 (blocked) | 0/0 (blocked) |", "| 2020 (presidential) | 0/0 | 2/2 |"),
+            ("| 2021 | 63/64 | 0/0 (blocked) |", "| 2021 | 63/64 | 1/1 |"),
+        ],
+    ),
+}
+
+# Tables of the analysis left out of the talk.
+SKIP_TABLES = {3}
+
+# Extra slides shown right after a given table: table number -> Markdown file beside this script.
+# Each file is shown as written; its first line ("# ...") becomes the slide's heading.
+EXTRA_AFTER = {1: "extra-table1-with-no-comparison-row.md"}
+
+
+def extra_slide(filename: str) -> list[str]:
+    """Slide lines for an extra file: its heading, its tables and text; anything after a line
+    starting "Caption:" goes to the speaker notes."""
+    lines = Path(__file__).with_name(filename).read_text(encoding="utf-8").rstrip("\n").split("\n")
+    heading = lines[0].lstrip("# ").strip()
+    body = lines[1:]
+    cut = next((k for k, line in enumerate(body) if line.startswith("Caption:")), len(body))
+    table = [line for line in body[:cut] if line.startswith("|")]
+    text = " ".join(line.strip() for line in body[:cut] if line.strip() and not line.startswith("|"))
+    notes = [line for line in body[cut:] if line.strip()]
+    return [
+        "---",
+        "class: table-slide" + (", wide" if wide("\n".join(table)) else ""),
+        f"### {heading}",
+        "",
+        *table,
+        "",
+        "???",
+        *(notes + ([""] if notes else [])),
+        text,
+        "",
+    ]
+
+
+def wide(table: str) -> bool:
+    """Whether a table needs the smaller font: long rows, or seven or more columns."""
+    rows = table.split("\n")
+    return max(len(row) for row in rows) > 120 or rows[0].count("|") - 1 >= 7
+
+
 def main() -> None:
     parts = [START]
     for n, (name, table, caption, explanation) in enumerate(tables(), 1):
+        if n in SKIP_TABLES:
+            continue
+        heading, replacements = TABLE_OVERRIDES.get(n, (f"Table {n}", []))
+        for old, new in replacements:
+            if old not in table:
+                raise SystemExit(f"Table {n} no longer contains {old!r}: update TABLE_OVERRIDES")
+            table = table.replace(old, new)
         parts += [
             "---",
-            "class: table-slide" + (", wide" if max(len(row) for row in table.split("\n")) > 120 else ""),
-            f"### From our analysis: Table {n}",
+            "class: table-slide" + (", wide" if wide(table) else ""),
+            f"### {heading}",
             "",
             table,
             "",
@@ -102,6 +162,8 @@ def main() -> None:
             f"From our analysis: {explanation}",
             "",
         ]
+        if n in EXTRA_AFTER:
+            parts += extra_slide(EXTRA_AFTER[n])
     parts.append(END)
     text = SLIDES.read_text(encoding="utf-8")
     block = "\n".join(parts)
@@ -110,7 +172,7 @@ def main() -> None:
     else:
         text = text.rstrip("\n") + "\n\n" + block + "\n"
     SLIDES.write_text(text, encoding="utf-8")
-    print(f"wrote {len(parts) and len(tables())} table slides into {SLIDES}")
+    print(f"wrote {sum(1 for p in parts if p == '---')} table slides into {SLIDES}")
 
 
 if __name__ == "__main__":

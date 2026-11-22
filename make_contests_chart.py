@@ -7,35 +7,31 @@ behind it, which we may publish, rebuilt with the 2026 general onboarded (2026 g
 files from the auditcenter mirror at commit 357c682). Two bands: targeted contests (the whole
 contest was a formal target) and opportunistic contests (every other contest, audited on
 cards drawn for other targets; a contest whose only targets were county portions, each sized
-on one county's margin, is opportunistic). The opportunistic band is split by shade: the
-lighter part is the opportunistic contests that no row of CORLA's comparison files names,
-under the contest's name or a county portion's. That describes the export, not an absence of
-evidence: those contests still get an opportunistic risk level (our analysis).
-2017-2018 (ballot-list era) are not in that table, and the 2020 presidential primary's 2
-contests are left out of the chart. Colours are Okabe-Ito blue and orange, with a lighter
-tint of the orange, readable with red-green colour blindness; the legend also labels each
-band in text. Standard library only.
+on one county's margin, is opportunistic). Every opportunistic contest has an opportunistic
+risk level. 2017-2018 (ballot-list era) are not in that table, and the 2020
+presidential primary's 2 contests are left out of the chart. Colours are Okabe-Ito blue and
+orange, readable with red-green colour blindness; the legend also labels each band in text.
+Standard library only.
 """
 
 from pathlib import Path
 
-ROWS = [  # election, targeted, opportunistic named in a comparison row, opportunistic with none
-    ("2019", 52, 502, 22),
-    ("2020 primary", 34, 321, 17),
-    ("2020 general", 60, 526, 66),
-    ("2021", 54, 591, 21),
-    ("2022 primary", 38, 612, 1),
-    ("2022 general", 43, 881, 37),
-    ("2023", 43, 549, 69),
-    ("2024 general", 63, 599, 59),
-    ("2025", 62, 548, 30),
-    ("2026 primary", 26, 593, 1),
-    ("2026 general", 52, 876, 53),
+ROWS = [  # election, targeted, opportunistic
+    ("2019", 52, 524),
+    ("2020 primary", 34, 338),
+    ("2020 general", 60, 592),
+    ("2021", 54, 612),
+    ("2022 primary", 38, 613),
+    ("2022 general", 43, 918),
+    ("2023", 43, 618),
+    ("2024 general", 63, 658),
+    ("2025", 62, 578),
+    ("2026 primary", 26, 594),
+    ("2026 general", 52, 929),
 ]
 COLOURS = [
     ("Targeted", "#0072B2"),
     ("Opportunistic", "#E69F00"),
-    ("Opportunistic, no comparison row", "#F5D9A0"),
 ]
 
 W, H = 760, 460
@@ -79,6 +75,5 @@ print(
     "wrote contests.svg:",
     sum(sum(r[1:]) for r in ROWS), "contests,",
     sum(r[1] for r in ROWS), "targeted,",
-    sum(r[2] + r[3] for r in ROWS), "opportunistic, of which",
-    sum(r[3] for r in ROWS), "with no comparison row",
+    sum(r[2] for r in ROWS), "opportunistic",
 )
