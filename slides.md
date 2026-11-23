@@ -22,13 +22,13 @@ class: center, middle
 
 ### 7,503 contests in a decade
 
-Neal McBurnett, Lori Stevens, John Caron, Mike Raisch
+Neal McBurnett, Lori Mohr Stevens, John Caron, Mike Raisch
 
 [EVT/WOTE 2026](https://centerforvoting.rice.edu/electronic-voting-technologies-workshop-trustworthy-elections-conference)
 
 Rice University, Houston, Texas · December 7, 2026
 
-.footnote[Draft version 2 · 2026-11-22 16:28 MST]
+.footnote[Draft version 3 · 2026-11-22 17:09 MST]
 
 ???
 15 minutes in all: about 11 of talk, 4 for questions.
